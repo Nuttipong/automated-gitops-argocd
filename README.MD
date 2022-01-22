@@ -35,6 +35,13 @@ from where Argo CD running
 > k port-forward service/argocd-server 8080:80
 ```
 
+Non-HA & HA Update
+```
+> k apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/
+<version>/manifests/install.yaml
+> k apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/<version>/manifests/ha/install.yaml
+```
+
 Reset pwd
 - https://argo-cd.readthedocs.io/en/release-1.8/faq/
 
@@ -77,3 +84,14 @@ Setting up secret mgmt with Argo CD
 HA, Backup, and Disaster recovery 
 Webhook
 Monitoring and Notification
+
+
+Helm CLI
+```
+> helm install demo-guestbook guestbook
+> helm list --short
+> helm upgrade demo-guestbook guestbook
+> helm status demo-guestbook
+> helm rollback demo-guestbook 1
+> helm history demo-guestbook
+```
