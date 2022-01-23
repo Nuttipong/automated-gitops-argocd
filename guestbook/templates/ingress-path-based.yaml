@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    name: frontend
+  name: guestbook-ingress-path-based
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # defaultBackend:
+  #   service:
+  #     name: default-backend
+  #     port:
+  #       number: 8086
+  rules:
+  - host: nginx.ingress.local
+    http:
+      paths:
+      - path: /blue
+        pathType: Prefix
+        backend:
+          service:
+            name: nginxhello-blue
+            port:
+              number: 8002
+      - path: /red
+        pathType: Prefix
+        backend:
+          service:
+            name: nginxhello-red
+            port:
+              number: 8007
