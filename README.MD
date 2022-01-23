@@ -1,34 +1,42 @@
-Requirements for Argo CD
+### Argo CD Architecture
+<img src="./doc/argocd-architecture.png" height="350">
+
+### Requirements for Argo CD
 1. kubectl command-line tool
 2. Kubernetes cluster to host Argo CD
 3. Cluster admin level access
 4. kubeconfig configured to connect Kubenetes cluster
 5. Access to Github or other repo
 
-Deploying Argo CD
-
-Types of Argo CD install
+### Types of Argo CD install
 Non HA, 
 - install.yaml
 - recommended for dev
 - single pods, replicas for Argo CD
+
 HA,
 - namespace-install.yaml
 - recommended for prod
 - Tuned for HA and resiliency
 - multiple replicas for suppoted components
+
 Core install,
 - core-install.yaml
 - lightweigh
 - no webui, API server not needed
 
+### Cluster level & Namespace level
+![](./doc/cluster-ns-level.png)
+
 Cluster level
 - Use when you have cluster level access & will deploy apps in the same cluster
 that Argo CD runs on.
+
 Namespace level
 - Use when you have namespace level access & will deploy apps external cluster
 from where Argo CD running
 
+### Deploying Argo CD
 ```
 > k create namespace argocd
 > k apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -45,8 +53,6 @@ Non-HA & HA Update
 Reset pwd
 - https://argo-cd.readthedocs.io/en/release-1.8/faq/
 
-
-
 Accessing Argo CD API Server
 1. WebUI
 2. Argo CD CLI
@@ -54,6 +60,7 @@ Accessing Argo CD API Server
 > choco install argocd-cli
 > brew install argocd
 ```
+
 Common CLI
 ```
 > argocd login
@@ -66,27 +73,21 @@ Common CLI
 > argocd cluster
 ```
 
-
-Using CLI
-```
-```
-
-Upgrading Argo CD
-```
-```
-
 Setting up RBAC for Argo CD
 ```
 ```
 
-Configuring user mgmt in Argo CD
-Setting up secret mgmt with Argo CD
-HA, Backup, and Disaster recovery 
-Webhook
-Monitoring and Notification
+### Ingress
+```
+> k apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
+```
+Refs:
+- https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
+- https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer
+- https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl#secrets
 
 
-Helm CLI
+### Helm CLI
 ```
 > helm install demo-guestbook guestbook
 > helm list --short
