@@ -95,4 +95,5 @@ Refs:
 > helm status demo-guestbook
 > helm rollback demo-guestbook 1
 > helm history demo-guestbook
+> helm install --dry-run --debug qa guestbook-umbrella
 ```

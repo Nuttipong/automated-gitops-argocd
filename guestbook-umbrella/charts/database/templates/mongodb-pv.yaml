@@ -1,6 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
+  namespace: {{ .Release.Name }}
   name: {{ .Release.Name }}-{{ .Chart.Name }}-pv
   labels:
     type: local
