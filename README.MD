@@ -97,3 +97,16 @@ Refs:
 > helm history demo-guestbook
 > helm install --dry-run --debug qa guestbook-umbrella
 ```
+
+## Kube secret
+```
+> k -n dev get secrets/dev-database-secret -o yaml
+> echo <ENCODED_VALUE> | base64 -D
+```
+
+## Mongo
+```
+> mongo "mongodb://admin@localhost:27017/?authSource=guestbook"
+> mongo "mongodb://admin:password@mongodb:27017/guestbook?authSource=admin"
+> mongo "mongodb://admin:password@localhost:27017/guestbook?authSource=admin" 
+```
