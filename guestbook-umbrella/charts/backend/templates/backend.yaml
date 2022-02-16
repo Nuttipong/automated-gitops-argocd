@@ -21,10 +21,10 @@ spec:
         - name: http
           containerPort: 3000
         env:
-        - name: MONGODB_URI
-          value: mongodb://admin:password@dev-database:27017/guestbook?authSource=admin
         # - name: MONGODB_URI
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
-        #       key: mongodb-uri
+        #   value: mongodb://admin:password@dev-database:27017/guestbook?authSource=admin
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
+              key: mongodb-uri
