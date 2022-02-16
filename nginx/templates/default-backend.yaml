@@ -33,7 +33,7 @@ metadata:
     app.kubernetes.io/part-of: default-backend
 spec:
   ports:
-  - port: 8086
+  - port: 8087
     protocol: TCP
     targetPort: 8080
   selector:
