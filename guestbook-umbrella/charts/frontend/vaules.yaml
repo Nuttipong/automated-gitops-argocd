@@ -9,4 +9,4 @@ service:
   type: ClusterIP
   port: 8006
 ingress:
- host: frontend.ingress.local
+  host: frontend.ingress.local
