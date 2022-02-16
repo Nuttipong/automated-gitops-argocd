@@ -4,11 +4,11 @@ metadata:
   namespace: {{ .Release.Name }}
   labels:
     name: {{ .Release.Name }}-{{ .Chart.Name }}
-  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  name: mongodb
 spec:
   ports:
     - name: mongodb
       port: 27017
       targetPort: 27017
   selector:
-    app: mongodb
+    app: {{ .Release.Name }}-{{ .Chart.Name }}
